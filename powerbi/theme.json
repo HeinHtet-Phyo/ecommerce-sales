@@ -1,0 +1,71 @@
+{
+  "name": "Olist Sales – Clean",
+  "dataColors": [
+    "#1F3A5F",
+    "#2A9D8F",
+    "#8A939B",
+    "#4F7CAC",
+    "#9CC5C0",
+    "#5B8E7D",
+    "#D1495B",
+    "#C3C8CD"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#333F48",
+  "tableAccent": "#1F3A5F",
+  "good": "#5B8E7D",
+  "neutral": "#C3C8CD",
+  "bad": "#D1495B",
+  "minimum": "#DCE6F0",
+  "maximum": "#1F3A5F",
+  "textClasses": {
+    "callout": {
+      "fontSize": 28,
+      "fontFace": "Segoe UI",
+      "color": "#1F3A5F"
+    },
+    "title": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI",
+      "color": "#333F48"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI",
+      "color": "#333F48"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#333F48"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontFamily": "Segoe UI",
+            "fontSize": 14,
+            "fontColor": {
+              "solid": {
+                "color": "#333F48"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
