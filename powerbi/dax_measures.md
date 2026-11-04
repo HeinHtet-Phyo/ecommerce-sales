@@ -82,7 +82,7 @@ Line by line:
 | `Sales` | Total Revenue, Total Orders, AOV |
 | `Customers` | Total Customers, Repeat Customers, Repeat Customer % |
 | `Delivery` | Orders With Delivery Date, Late Orders, % Late Deliveries |
-| `Reviews` | Avg Review Score, Avg Review - Late, Avg Review - On Time, Review Gap |
+| `Reviews` | Avg Review Score, Avg Review - Late, Avg Review - On Time, Review Gap, Reviewed Orders |
 | `vs Last Month` | every "Last Month" and "MoM" / "Change" measure |
 
 ---
@@ -258,6 +258,16 @@ Review Gap =
 
 How many review points higher on-time orders score than late orders. A bigger gap means late delivery hurts customer satisfaction more.
 **Format:** `0.00` (label it "points" on the visual).
+
+#### Reviewed Orders
+
+```dax
+Reviewed Orders =
+COUNT ( fact_orders[review_score] )
+```
+
+Counts orders that have a review. `COUNT` skips blanks, so orders with no review are not counted. It is used in the review-score distribution chart: put `review_score` in the legend and this measure in the values of a 100% stacked bar, and Power BI shows each score's share within each group.
+**Format:** `#,##0`.
 
 ---
 
