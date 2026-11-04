@@ -57,6 +57,39 @@ Every number here comes from a query in `sql/` that was run against the `olist` 
 
 ---
 
-## Key findings, recommendations and limitations
+## Key findings
 
-_Written in Phase 6 below._
+**1. Late deliveries cost about 2 review points.**
+6.77% of delivered orders arrive late (6,534 of 96,470). Late orders average **2.27 stars against 4.29** for on-time orders, and 53.8% of them get a 1-star review (6.6% when on time). Even 1–3 days late lowers the average to 3.29.
+*So what:* delivery is the clearest lever on customer satisfaction that the data shows. Low review scores hurt seller ratings and make customers less likely to come back, which matters given finding 2.
+
+**2. Almost nobody comes back.**
+Only **3.0% of customers (2,801 of 93,358) placed a second delivered order**, and they bring in just 5.5% of revenue. A repeat customer is worth R$260 against R$138 for a one-time buyer.
+*So what:* growth depends almost entirely on finding new customers, which is usually the most expensive way to grow. Retention is a large, untapped opportunity.
+
+**3. Revenue is concentrated, and growth has stalled.**
+São Paulo, Rio de Janeiro and Minas Gerais bring in **63.4% of revenue**. After growing from R$112k (Jan 2017) to a R$988k peak (Nov 2017), monthly revenue levelled off at R$826k–R$978k through 2018. No month has beaten the Nov 2017 peak, and AOV stayed between R$124 and R$149, so revenue only grows when the number of orders grows.
+*So what:* without new demand (new regions or more repeat orders), revenue is likely to stay flat.
+
+## Recommendations
+
+**1. Fix late deliveries where they cluster: Rio de Janeiro and busy periods.**
+Rio de Janeiro has 12.1% of orders late (against 4.5% in São Paulo) and accounts for 23% of all late orders. Late rates also jumped to 12.4% in Nov 2017 and 19.0% in Mar 2018. Review carrier performance on routes into Rio de Janeiro, set more realistic delivery estimates there, and add carrier capacity before known peaks such as Black Friday. When an order is going to be late, tell the customer before the estimated date: the score drop starts at just 1–3 days late.
+*Measure it by:* % late deliveries and average review score for Rio de Janeiro, tracked monthly on the dashboard.
+
+**2. Launch a second-order programme.**
+Send a time-limited offer after a customer's first order is delivered **on time** (the moment their review is most likely positive), aimed at the top categories. For scale: if 1% more customers (about 934 people) placed one extra order at today's AOV of R$137.04, that would be about R$128k of extra revenue, before any growth.
+*Measure it by:* Repeat Customer %, starting from the current 3.0%. Test it on a small group of customers against a control group before rolling it out.
+
+**3. Reduce dependence on a few states and sellers.**
+Sellers outside the South-East are thin on the ground. In Bahia, one seller holds 78.4% of the state's seller revenue, and the Northeast region has the highest late rate (12.7%) while bringing in 11.3% of revenue. Recruit more sellers in the Northeast and test whether local sellers deliver faster there. That would support growth outside the three big states and lower the risk of losing one key seller.
+*Measure it by:* revenue share outside SP/RJ/MG, and % late by region.
+
+## Limitations
+
+- **Old, Brazilian data.** Orders run from Sep 2016 to Oct 2018 in one country, so the patterns may not hold for today or for the UK market. The method (SQL logic, definitions, dashboard) transfers; the numbers don't.
+- **No cost data, so no profit.** Revenue excludes freight, but there are no product costs, margins or marketing spend, so we can't say which categories or states are most *profitable*.
+- **Reviews show association, not cause.** Late orders score much lower, but other factors (product quality, seller service) may also play a part. A controlled test would be needed to prove cause. 99.3% of delivered orders have a review, but reviews only capture customers who chose to answer the survey.
+- **"Late" means late against Olist's own estimate.** States with long estimates (e.g. Amazonas, 26 days on average) can look "on time" while still being slow.
+- **The edges of the data are incomplete.** 2016 and Sep–Oct 2018 are excluded from trend charts (see `cleaning_log.md`). Aug 2018 is the last full month.
+- **Customer matching depends on Olist's `customer_unique_id`.** If one person used different details, they may be counted as two customers, which would make the repeat rate look slightly lower than it really is.
