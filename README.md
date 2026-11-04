@@ -43,7 +43,7 @@ Three pages, each answering one business question. Every chart title states the 
 
 **Data model.** A star schema: two fact tables (order items for revenue, orders for delivery and reviews) with shared date, state, customer and seller dimensions. Using two facts stops a 3-item order's review being counted three times.
 
-![Power BI data model](images/data_model.png)
+![Power BI data model: 2 fact tables and 4 dimension tables, one-to-many relationships](images/data_model.png)
 
 Files: [Power BI file (.pbix)](powerbi/ecommerce_dashboard.pbix) · [dashboard PDF](powerbi/ecommerce_dashboard.pdf) · [DAX measures](powerbi/dax_measures.md)
 
