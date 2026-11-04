@@ -2,10 +2,9 @@
 
 **SQL (MySQL) and Power BI analysis of 96,000 delivered orders from a Brazilian online marketplace: where revenue comes from, what hurts customer satisfaction, and what to do about it.**
 
-<!-- DASHBOARD SCREENSHOT: after building in Power BI, save page 1 as images/dashboard_overview.png and replace the line below with:
-![Dashboard overview](images/dashboard_overview.png)
--->
-> **[Dashboard screenshot coming soon]**: the Power BI dashboard is being built from the prepared views. See the [build guide](powerbi/dashboard_build_guide.md).
+![Dashboard overview](images/overview.png)
+
+*Overview page of the 3-page Power BI dashboard. All pages are below, or open the [full dashboard PDF](powerbi/ecommerce_dashboard.pdf).*
 
 ## Business problem
 
@@ -15,6 +14,7 @@ An online marketplace wants to know how sales are trending, which products and r
 
 - **Late deliveries cost about 2 review points.** 6.8% of orders arrive late, and those orders average **2.27 stars against 4.29** for on-time orders. 54% of late orders get a 1-star review.
 - **Only 3.0% of customers buy again** (2,801 of 93,358), bringing in 5.5% of revenue. A repeat customer is worth R$260, against R$138 for a one-time buyer.
+- **Rio de Janeiro has a delivery problem.** It has **23% of all late orders but only 13% of orders**: its late rate is 12.1%, against 4.5% in São Paulo.
 - **Revenue is concentrated, and growth has stalled.** Three states (São Paulo, Rio de Janeiro, Minas Gerais) bring in **63%** of the R$13.2m revenue. Monthly revenue peaked at R$988k in Nov 2017 and levelled off at R$826k–R$978k through 2018.
 
 ## Recommendations
@@ -25,10 +25,28 @@ An online marketplace wants to know how sales are trending, which products and r
 
 Full detail: [docs/findings.md](docs/findings.md)
 
+## Dashboard
+
+Three pages, each answering one business question. Every chart title states the finding, and each page ends with a recommendation.
+
+**1. How is the business doing?** KPI cards, monthly revenue trend and month-on-month change (dips in red).
+
+![Overview](images/overview.png)
+
+**2. Where does revenue come from?** Top categories, revenue by state and top sellers.
+
+![Products and regions](images/products_regions.png)
+
+**3. What hurts customer satisfaction?** Reviews for late vs on-time orders, late orders by state and repeat customers.
+
+![Delivery and reviews](images/delivery_reviews.png)
+
+Files: [dashboard PDF](powerbi/ecommerce_dashboard.pdf) · [DAX measures](powerbi/dax_measures.md) · [build guide](powerbi/dashboard_build_guide.md)
+
 ## Tools
 
 - **MySQL** (command-line client): schema design, data loading, data-quality checks, analysis with CTEs and window functions (`LAG`, `RANK`, `ROW_NUMBER`, `SUM OVER`)
-- **Power BI**: star-schema data model, DAX measures, report theme (dashboard build in progress)
+- **Power BI**: star-schema data model, DAX measures (incl. month-on-month time intelligence), conditional formatting, 3-page dashboard
 - **Git / GitHub**: one commit per project phase
 - **Python**: one small helper that saves query results as CSV
 
@@ -103,7 +121,6 @@ ORDER BY order_month;
 More in [findings.md](docs/findings.md#limitations).
 
 **Next steps:**
-- Finish the Power BI dashboard and add screenshots.
 - Test whether the distance between seller and customer explains late deliveries, using the geolocation table.
 - Build a customer cohort view (repeat rate by first-order month).
 - Analyse review text for the most common complaints.
