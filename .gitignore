@@ -1,0 +1,20 @@
+# Raw Olist CSVs (~125 MB) - download from Kaggle, see README
+data/raw/
+
+# macOS
+.DS_Store
+
+# Power BI backups / temp files
+*.pbix.bak
+*.pbix~
+~$*.pbix
+.~lock.*
+
+# Local credentials - never commit
+.my.cnf
+*.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
