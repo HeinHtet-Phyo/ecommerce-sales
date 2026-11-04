@@ -14,7 +14,7 @@ Private prep notes for talking about this project. Every number is from `docs/fi
 - **Loading.** I designed the MySQL schema, loaded the CSVs from the command line and checked row counts against every file. That check caught a problem: a backslash in one review was merging two rows.
 - **Quality checks.** I ran 13 checks and wrote every decision into a cleaning log. For example, I counted only delivered orders as revenue, kept the latest review when an order had two, and used `customer_unique_id` instead of `customer_id`, which changes on every order.
 - **Analysis.** I wrote one SQL file per question, using CTEs and window functions like `LAG` and `RANK`. Every result reconciles to the same total: R$13.2 million across 96,478 orders.
-- **Dashboard.** I built a star-schema set of views, the DAX measures and a build guide for a three-page Power BI dashboard.
+- **Dashboard.** I exported star-schema views into Power BI, set up the relationships and a date table, wrote 24 DAX measures, and built a three-page dashboard: one page per business question, with chart titles that state the finding and a recommendation on each page. I checked every KPI card against the SQL totals before building the charts.
 
 **Result.**
 - Late deliveries are the biggest driver of bad reviews: late orders average **2.27 stars against 4.29** for on-time orders.
@@ -22,7 +22,7 @@ Private prep notes for talking about this project. Every number is from `docs/fi
 - Three states bring in **63% of revenue**, and growth had stalled after the November 2017 peak.
 
 **Business impact.** I made three recommendations, each with a metric to track:
-- Fix delivery in Rio de Janeiro, which has 23% of all late orders, and plan capacity for busy periods.
+- Fix delivery in Rio de Janeiro, which has 23% of all late orders from only 13% of orders (late rate 12.1% vs 4.5% in São Paulo), and plan capacity for busy periods.
 - Launch a second-order programme for customers whose first order arrived on time. Each extra 1% of customers buying again is worth about R$128k.
 - Recruit sellers outside the South-East to cut dependence on a few states and sellers.
 
@@ -96,8 +96,33 @@ Time-intelligence functions like `DATEADD` (for "revenue last month") need a con
 
 ---
 
+## Dashboard questions
+
+**Walk me through your dashboard.**
+Three pages, one per business question. Page 1 answers "how is the business doing?" with five KPI cards, the monthly revenue trend and a month-on-month chart that shows the dips in red. Page 2 shows where revenue comes from: categories, states and top sellers. Page 3 shows what hurts satisfaction: reviews for late vs on-time orders, late orders by state, and how few customers come back. Every chart title states the finding, and each page ends with a recommendation.
+
+**São Paulo has more late orders than Rio. Why focus on Rio?**
+Because São Paulo is also much bigger. Rio has 23% of late orders from only 13% of orders, so its late *rate* is 12.1%, almost three times São Paulo's 4.5%. Comparing rates, not just totals, shows where the real problem is.
+
+**Why did you leave January 2017 out of the month-on-month chart?**
+January 2017 is compared with December 2016, which had almost no orders, so the percentage growth is huge and meaningless. Including it squashed every other bar flat, so I excluded it and kept the chart honest.
+
+**Why does the review chart's axis start at 0?**
+If the axis started at 2, the gap between 2.27 and 4.29 would look far bigger than it is. Starting at 0 shows the true difference, which is still large.
+
+**Why the trend window Jan 2017 – Aug 2018?**
+2016 was the launch period with very few orders, and Sep–Oct 2018 come after the data snapshot. Plotting them would show fake spikes and crashes. Totals by category, state and seller still use all delivered orders.
+
+**How did you check the dashboard was correct?**
+Before building any charts I put test cards for revenue, orders, late orders and average review on a blank page and checked they matched the SQL results exactly (R$13,221,498.11, 96,478, 6,534 and 4.16).
+
+**Why Top N filters instead of showing everything?**
+There are 72 categories, 27 states and almost 3,000 sellers. Showing the top 10 keeps each chart readable and still covers most of the revenue (62% for categories, 13% for sellers).
+
+---
+
 ## CV bullet options (pick one)
 
 1. Analysed 96k e-commerce orders across 9 related MySQL tables using CTEs and window functions. Found that late deliveries cut review scores from 4.29 to 2.27 and that only 3% of customers reorder, and recommended delivery and retention fixes.
-2. Built an end-to-end SQL and Power BI sales analysis (R$13.2m revenue): designed the schema, ran 13 data-quality checks, and showed that 3 states drive 63% of revenue while Rio de Janeiro accounts for 23% of late deliveries.
-3. Turned raw marketplace data into a star-schema Power BI model with 25+ DAX measures, and identified a 2-point review drop for late orders and a 3% repeat-purchase rate as the top two business priorities.
+2. Built an end-to-end SQL and Power BI sales analysis (R$13.2m revenue): designed the schema, ran 13 data-quality checks, and built a 3-page dashboard showing that 3 states drive 63% of revenue while Rio de Janeiro has 23% of late orders from only 13% of orders.
+3. Turned raw marketplace data into a star-schema Power BI model with 24 DAX measures and a 3-page dashboard, and identified a 2-point review drop for late orders and a 3% repeat-purchase rate as the top two business priorities.

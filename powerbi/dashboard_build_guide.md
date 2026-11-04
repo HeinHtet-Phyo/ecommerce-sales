@@ -242,14 +242,19 @@ Line chart: X = `dim_date[Year-Month]`, Y = `% Late Deliveries`, colour red, wit
 1. **Check each title against the visual.** Every number in a title must match what the chart shows with no slicers selected. If you change a title, use `docs/findings.md` as the source.
 2. **Check slicers:** pick "Rio de Janeiro" on page 3. % late should show 12.1%.
 3. **Add alt text** to each visual (Format → General → Alt text) for accessibility.
-4. **Save** as `powerbi/ecommerce_sales_dashboard.pbix`. If the file is under 50 MB you can commit it. `.gitignore` already ignores backup and lock files.
+4. **Save** as `powerbi/ecommerce_dashboard.pbix`. If the file is under 50 MB you can commit it. `.gitignore` already ignores backup and lock files.
 
-## Screenshots to take for `images/`
+## Screenshots in `images/`
 
-Use **File → Export → Export to PDF**, or the Windows Snipping Tool (Win + Shift + S) at 100% zoom. Save as PNG:
+The finished dashboard was exported with **File → Export → Export to PDF** ([ecommerce_dashboard.pdf](ecommerce_dashboard.pdf)), and each page saved as a PNG:
 
-| File name | What to capture |
+| File | Page |
 |---|---|
+| [`images/overview.png`](../images/overview.png) | Page 1: How is the business doing? (top of the README) |
+| [`images/products_regions.png`](../images/products_regions.png) | Page 2: Where does revenue come from? |
+| [`images/delivery_reviews.png`](../images/delivery_reviews.png) | Page 3: What hurts customer satisfaction? |
+
+---|---|
 | `images/dashboard_overview.png` | Page 1, full page (this goes at the top of the README) |
 | `images/dashboard_products_regions.png` | Page 2, full page |
 | `images/dashboard_delivery_customers.png` | Page 3, full page |
