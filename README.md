@@ -41,7 +41,7 @@ Three pages, each answering one business question. Every chart title states the 
 
 ![Delivery and reviews](images/delivery_reviews.png)
 
-Files: [dashboard PDF](powerbi/ecommerce_dashboard.pdf) · [DAX measures](powerbi/dax_measures.md) · [build guide](powerbi/dashboard_build_guide.md)
+Files: [Power BI file (.pbix)](powerbi/ecommerce_dashboard.pbix) · [dashboard PDF](powerbi/ecommerce_dashboard.pdf) · [DAX measures](powerbi/dax_measures.md) · [build guide](powerbi/dashboard_build_guide.md)
 
 ## Tools
 
